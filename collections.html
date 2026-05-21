@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TK Designs Bw — Services & Event Catalogue. Premium tailoring for weddings, corporate events, graduations and more in Gaborone, Botswana." />
+  <title>Collections | TK Designs Bw — Services & Events</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { DEFAULT: '#c9a14d', light: '#e2c47a', dark: '#a07c30' },
+            ink:  { DEFAULT: '#0f0f0f', soft: '#1a1a1a' },
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            cinzel:  ['Cinzel', 'serif'],
+            body:    ['DM Sans', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --gold: #c9a14d; --gold-light: #e2c47a; --gold-dark: #a07c30;
+      --ink: #0f0f0f; --cream: #e8e0d0;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #0f0f0f; color: #e8e0d0; overflow-x: hidden; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: .02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .tg { background: linear-gradient(130deg,#e2c47a 0%,#c9a14d 45%,#a07c30 72%,#e2c47a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* navbar */
+    #navbar { transition: padding .4s, background .4s, box-shadow .4s; }
+    #navbar.scrolled { padding-top:.5rem; padding-bottom:.5rem; background:rgba(8,8,8,.96); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(201,161,77,.15); }
+    .nav-link { position:relative; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:#777; transition:color .3s; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:-3px; width:0; height:1px; background:var(--gold); transition:width .35s; }
+    .nav-link:hover, .nav-link.active { color:var(--gold); }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+
+    /* buttons */
+    .btn-gold { display:inline-block; position:relative; overflow:hidden; background:linear-gradient(135deg,#c9a14d,#a07c30); color:#0f0f0f; font-family:'DM Sans',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; padding:.8rem 2rem; border:none; transition:transform .3s,box-shadow .3s; }
+    .btn-gold::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,#e2c47a,#c9a14d); opacity:0; transition:opacity .3s; }
+    .btn-gold:hover::before { opacity:1; }
+    .btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(201,161,77,.35); }
+    .btn-gold span { position:relative; z-index:1; }
+    .btn-ghost { display:inline-block; background:transparent; color:var(--gold); font-family:'DM Sans',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; padding:.8rem 2rem; border:1px solid rgba(201,161,77,.4); transition:all .3s; }
+    .btn-ghost:hover { background:rgba(201,161,77,.07); border-color:var(--gold); transform:translateY(-2px); }
+
+    /* page hero */
+    #page-hero { min-height:55vh; display:flex; align-items:flex-end; position:relative; overflow:hidden; padding-bottom:5rem; background:#080808; }
+    #page-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:200px; background:linear-gradient(to top,#0f0f0f,transparent); }
+
+    .slabel { font-family:'DM Sans',sans-serif; font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold); }
+    .gdiv { width:48px; height:1px; background:var(--gold); opacity:.55; }
+    .gdiv-c { width:48px; height:1px; background:var(--gold); opacity:.55; margin:1rem auto; }
+    .dia { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); display:inline-block; flex-shrink:0; }
+
+    /* service cards */
+    .svc-card { position:relative; overflow:hidden; border:1px solid rgba(201,161,77,.1); background:#131313; transition:border-color .45s,box-shadow .45s,transform .45s; }
+    .svc-card:hover { border-color:rgba(201,161,77,.45); box-shadow:0 20px 60px rgba(0,0,0,.55); transform:translateY(-6px); }
+    .svc-icon { width:58px; height:58px; border:1px solid rgba(201,161,77,.3); display:flex; align-items:center; justify-content:center; transition:background .4s,border-color .4s; }
+    .svc-card:hover .svc-icon { background:rgba(201,161,77,.07); border-color:var(--gold); }
+    .ctrim { position:absolute; top:0; right:0; width:36px; height:36px; border-top:1px solid rgba(201,161,77,.35); border-right:1px solid rgba(201,161,77,.35); transition:width .4s,height .4s; }
+    .svc-card:hover .ctrim { width:54px; height:54px; }
+    .tag { font-family:'DM Sans',sans-serif; font-size:.54rem; letter-spacing:.2em; text-transform:uppercase; padding:.2rem .6rem; border:1px solid rgba(201,161,77,.3); color:var(--gold); background:rgba(201,161,77,.05); }
+
+    /* featured service */
+    .svc-feat { display:grid; grid-template-columns:1fr 1fr; border:1px solid rgba(201,161,77,.12); background:#131313; overflow:hidden; transition:border-color .4s; }
+    .svc-feat:hover { border-color:rgba(201,161,77,.45); }
+    @media(max-width:767px){ .svc-feat{grid-template-columns:1fr;} }
+    .img-panel { position:relative; overflow:hidden; min-height:280px; }
+    .img-panel .ip-inner { position:absolute; inset:0; transition:transform .65s ease; display:flex; align-items:center; justify-content:center; }
+    .svc-feat:hover .ip-inner { transform:scale(1.05); }
+
+    /* filter tabs */
+    .ftab { font-family:'DM Sans',sans-serif; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:#666; padding:.5rem 1.3rem; border:1px solid transparent; transition:all .3s; cursor:pointer; white-space:nowrap; background:transparent; }
+    .ftab:hover { color:var(--gold); border-color:rgba(201,161,77,.2); }
+    .ftab.on { color:var(--gold); border-color:rgba(201,161,77,.5); background:rgba(201,161,77,.06); }
+
+    /* event cards */
+    .ev-card { position:relative; overflow:hidden; background:#131313; border:1px solid rgba(201,161,77,.08); transition:border-color .4s,transform .4s,box-shadow .4s; cursor:pointer; }
+    .ev-card:hover { border-color:rgba(201,161,77,.4); transform:translateY(-7px); box-shadow:0 22px 55px rgba(0,0,0,.55); }
+    .ev-img { position:relative; overflow:hidden; }
+    .ev-img-inner { width:100%; transition:transform .6s ease; display:flex; align-items:center; justify-content:center; }
+    .ev-card:hover .ev-img-inner { transform:scale(1.07); }
+    .ev-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 55%); opacity:0; transition:opacity .4s; }
+    .ev-card:hover .ev-img::after { opacity:1; }
+    .ev-hover-cta { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%) translateY(12px); opacity:0; transition:opacity .35s,transform .35s; z-index:10; white-space:nowrap; }
+    .ev-card:hover .ev-hover-cta { opacity:1; transform:translateX(-50%) translateY(0); }
+
+    .yr-badge { position:absolute; top:.75rem; left:.75rem; z-index:10; font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.15em; padding:.25rem .65rem; background:rgba(0,0,0,.75); border:1px solid rgba(201,161,77,.4); color:var(--gold); }
+    .cat-pill { position:absolute; top:.75rem; right:.75rem; z-index:10; font-family:'DM Sans',sans-serif; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; padding:.22rem .6rem; color:#0f0f0f; font-weight:600; background:var(--gold); }
+
+    /* event modal */
+    #ev-modal { position:fixed; inset:0; z-index:300; display:flex; align-items:center; justify-content:center; padding:1rem; pointer-events:none; }
+    #ev-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.82); backdrop-filter:blur(8px); opacity:0; transition:opacity .4s; }
+    #ev-panel { position:relative; z-index:10; width:100%; max-width:800px; max-height:90vh; background:#141414; border:1px solid rgba(201,161,77,.2); overflow-y:auto; transform:scale(.94) translateY(20px); transition:transform .45s cubic-bezier(.16,1,.3,1),opacity .4s; opacity:0; }
+    #ev-modal.open { pointer-events:all; }
+    #ev-modal.open #ev-backdrop { opacity:1; }
+    #ev-modal.open #ev-panel { transform:scale(1) translateY(0); opacity:1; }
+    #ev-panel::-webkit-scrollbar { width:3px; }
+    #ev-panel::-webkit-scrollbar-thumb { background:rgba(201,161,77,.3); }
+
+    /* stat cards */
+    .stat-card { text-align:center; padding:1.75rem 1.25rem; border:1px solid rgba(201,161,77,.08); background:#131313; transition:border-color .3s; }
+    .stat-card:hover { border-color:rgba(201,161,77,.3); }
+
+    /* whatsapp fab */
+    #wa-fab { position:fixed; bottom:1.75rem; right:1.75rem; z-index:100; width:54px; height:54px; border-radius:50%; background:#25d366; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,.4); transition:transform .3s,box-shadow .3s; }
+    #wa-fab:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,.55); }
+    #wa-fab svg { width:26px; height:26px; fill:white; }
+
+    /* placeholder tones */
+    .ph1{background:linear-gradient(145deg,#1c1810,#0e0e0e);}
+    .ph2{background:linear-gradient(145deg,#13120f,#0d0d0d);}
+    .ph3{background:linear-gradient(145deg,#181820,#0e0e0e);}
+    .ph4{background:linear-gradient(145deg,#1a1510,#0e0e0e);}
+    .ph5{background:linear-gradient(145deg,#151410,#0d0d0d);}
+    .ph6{background:linear-gradient(145deg,#101418,#0d0d0d);}
+    .ph7{background:linear-gradient(145deg,#18100e,#0e0e0e);}
+    .ph8{background:linear-gradient(145deg,#141820,#0d0d0d);}
+
+    [x-cloak]{display:none!important;}
+    .no-sb::-webkit-scrollbar{display:none;} .no-sb{-ms-overflow-style:none;scrollbar-width:none;}
+  </style>
+</head>
+
+<body x-data="app()" x-init="init()">
+
+<!-- ══ WHATSAPP FAB ══ -->
+<a id="wa-fab" href="https://wa.me/26776635421?text=Hello%20TK%20Designs%2C%20I%27d%20like%20to%20enquire." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.477 2.025 7.793L0 32l8.467-2.002A15.95 15.95 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm7.27 19.377c-.398-.199-2.357-1.163-2.722-1.296-.365-.133-.63-.199-.895.2-.265.397-1.029 1.295-1.26 1.56-.232.265-.464.298-.862.1-.398-.2-1.681-.62-3.201-1.977-1.183-1.056-1.982-2.36-2.213-2.758-.231-.398-.025-.613.174-.812.178-.178.398-.465.597-.697.199-.233.265-.399.398-.665.133-.265.066-.498-.033-.697-.1-.199-.895-2.157-1.227-2.953-.323-.776-.65-.67-.895-.683-.231-.012-.497-.015-.763-.015-.265 0-.696.099-1.061.498-.365.398-1.394 1.362-1.394 3.319s1.427 3.85 1.626 4.116c.199.265 2.81 4.291 6.81 6.02.952.41 1.695.655 2.274.839.956.304 1.826.261 2.514.158.767-.114 2.357-.963 2.69-1.894.332-.93.332-1.727.232-1.893-.099-.165-.365-.265-.762-.464z"/></svg>
+</a>
+
+<!--NAVBAR-->
+
+<nav id="navbar"
+     class="fixed top-0 left-0 right-0 z-50 px-6 py-5"
+     x-data="{ open: false }">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+    <!-- Logo -->
+   <a href="index.html" class="flex items-center gap-3 group">
+  
+  <!-- Circular Logo -->
+  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-gold-light shadow-lg shadow-yellow-500/20">
+    <img src="logo tk.jpg" alt="TK Designs Logo" class="w-full h-full object-cover">
+  </div>
+
+  <!-- Text beside logo -->
+  <div class="flex flex-col leading-none">
+    <span class="font-cinzel text-sm tracking-widest text-white-gradient font-semibold">TK DESIGNS</span>
+    <span class="font-body text-[0.55rem] tracking-widest2 uppercase text-gray-500 group-hover:text-gold-light transition-colors">Decidedly · Different</span>
+  </div>
+
+</a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="about.html"       class="nav-link">About</a>
+      <a href="collections.html" class="nav-link">Collections</a>
+      <a href="gallery.html"     class="nav-link">Gallery</a>
+      <a href="contact.html"     class="nav-link">Contact</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <a href="https://wa.me/26778114976" target="_blank" rel="noopener"
+       class="hidden md:inline-block btn-gold">
+      <span>Book a Fitting</span>
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button @click="open = !open"
+            class="md:hidden flex flex-col gap-1.5 p-2 z-50 relative"
+            aria-label="Toggle menu">
+      <span class="block w-6 h-px bg-gold transition-all duration-300"
+            :class="open ? 'rotate-45 translate-y-2' : ''"></span>
+      <span class="block w-6 h-px bg-gold transition-all duration-300"
+            :class="open ? 'opacity-0' : ''"></span>
+      <span class="block w-6 h-px bg-gold transition-all duration-300"
+            :class="open ? '-rotate-45 -translate-y-2' : ''"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div x-show="open"
+       x-cloak
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0 -translate-y-4"
+       x-transition:enter-end="opacity-100 translate-y-0"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="md:hidden fixed inset-0 bg-ink/97 backdrop-blur-md flex flex-col items-center justify-center gap-10 z-40">
+    <a href="index.html"        @click="open=false" class="font-cinzel text-xl tracking-widest text-cream hover:text-gold transition-colors">HOME</a>
+    <a href="about.html"       @click="open=false" class="font-cinzel text-xl tracking-widest text-cream hover:text-gold transition-colors">ABOUT</a>
+    <a href="collections.html" @click="open=false" class="font-cinzel text-xl tracking-widest text-cream hover:text-gold transition-colors">COLLECTIONS</a>
+    <a href="gallery.html"     @click="open=false" class="font-cinzel text-xl tracking-widest text-cream hover:text-gold transition-colors">GALLERY</a>
+    <a href="contact.html"     @click="open=false" class="font-cinzel text-xl tracking-widest text-cream hover:text-gold transition-colors">CONTACT</a>
+    <a href="https://wa.me/26776635421" target="_blank"
+       class="btn-gold mt-4"><span>Book a Fitting</span></a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     PAGE HERO
+══════════════════════════════════ -->
+<section id="page-hero">
+  <div class="absolute top-0 right-0 w-1/2 h-full pointer-events-none" style="clip-path:polygon(28% 0%,100% 0%,100% 100%,0% 100%);background:linear-gradient(160deg,transparent 30%,rgba(201,161,77,.055) 100%);"></div>
+  <div class="absolute inset-0 pointer-events-none opacity-[.022]" style="background-image:repeating-linear-gradient(0deg,#c9a14d 0,#c9a14d 1px,transparent 0,transparent 70px),repeating-linear-gradient(90deg,#c9a14d 0,#c9a14d 1px,transparent 0,transparent 70px);background-size:70px 70px;"></div>
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+    <span class="font-cinzel font-bold opacity-[.025] whitespace-nowrap" style="font-size:16vw;color:#c9a14d;">COLLECTIONS</span>
+  </div>
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 30% 50%,rgba(201,161,77,.06) 0%,transparent 60%);"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-32">
+    <p class="slabel mb-5" data-aos="fade-up" data-aos-duration="700">TK Designs Bw — Phase 2, Gaborone</p>
+    <h1 class="font-cinzel leading-none" style="font-size:clamp(2.8rem,8vw,6.5rem);" data-aos="fade-up" data-aos-delay="80" data-aos-duration="900">
+      <span class="block text-cream">SERVICES &amp;</span>
+      <span class="tg block">EVENTS</span>
+    </h1>
+    <div class="flex items-center gap-4 mt-5" data-aos="fade-up" data-aos-delay="180">
+      <div class="gdiv"></div>
+      <p class="font-display italic text-gray-500 text-lg">Dressed for every occasion that matters</p>
+    </div>
+    <div class="flex items-center gap-2 mt-8" data-aos="fade-up" data-aos-delay="260">
+      <a href="index.html" class="font-body text-xs text-gray-600 hover:text-gold transition-colors tracking-widest uppercase">Home</a>
+      <span class="text-gray-700">/</span>
+      <span class="font-body text-xs text-gold tracking-widest uppercase">Collections</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     ① SERVICES
+══════════════════════════════════ -->
+<section id="services" class="pt-24 pb-20 px-6 md:px-12" style="background:#0f0f0f;">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+      <div data-aos="fade-right" data-aos-duration="800">
+        <p class="slabel mb-3">What We Do</p>
+        <h2 class="font-cinzel text-3xl md:text-5xl text-cream leading-tight">Our <span class="tg">Services</span></h2>
+        <div class="gdiv mt-5"></div>
+      </div>
+      <p class="font-body text-sm text-gray-500 max-w-sm leading-relaxed md:text-right" data-aos="fade-left" data-aos-duration="800" data-aos-delay="80">
+        From the first consultation to the final stitch — every service is built entirely around you.
+      </p>
+    </div>
+
+    <!-- ── Featured: Bespoke Tailoring ── -->
+    <div class="svc-feat mb-8" data-aos="fade-up" data-aos-duration="900">
+      <!-- image side -->
+      <div class="img-panel">
+        <img src="beespke.png" alt="Bespoke Tailoring" loading="lazy" />
+        <div class="absolute top-4 left-4 z-10"><span class="cat-pill">Signature Service</span></div>
+      </div>
+      <!-- content -->
+      <div class="p-10 md:p-14 flex flex-col justify-center relative" style="background:#141414;">
+        <div class="ctrim"></div>
+        <p class="slabel mb-3">01 — Flagship</p>
+        <h3 class="font-cinzel text-3xl md:text-4xl text-cream mb-4 leading-tight">Bespoke<br><span class="tg">Tailored Suits</span></h3>
+        <p class="font-body text-sm text-gray-500 leading-relaxed mb-6">
+          The full TK experience. Your body, your style, your occasion — translated into a suit built entirely from scratch. Multiple fittings, premium fabric choice, custom lining and monogram. This is how a gentleman is dressed.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="tag">Full Canvas</span><span class="tag">Multiple Fittings</span>
+          <span class="tag">Fabric Selection</span><span class="tag">Monogram</span><span class="tag">2–4 Weeks</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://wa.me/26776635421?text=I'd%20like%20to%20book%20a%20bespoke%20tailoring%20consultation." target="_blank" rel="noopener" class="btn-gold"><span>Book a Consultation</span></a>
+          <a href="index.html#contact" class="btn-ghost">Visit the Studio</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Service cards grid ── -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <template x-for="(svc, i) in services" :key="svc.id">
+        <div class="svc-card p-7" data-aos="fade-up" :data-aos-delay="(i%3)*70" data-aos-duration="800">
+          <div class="ctrim"></div>
+          <div class="svc-icon mb-6" x-html="svc.icon"></div>
+          <p class="slabel mb-2" x-text="`0${i+2} — ${svc.cat}`"></p>
+          <h3 class="font-cinzel text-xl text-cream mb-3" x-text="svc.name"></h3>
+          <p class="font-body text-sm text-gray-500 leading-relaxed mb-5" x-text="svc.desc"></p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <template x-for="t in svc.tags" :key="t"><span class="tag" x-text="t"></span></template>
+          </div>
+          <a :href="`https://wa.me/26776635421?text=I'm%20interested%20in%20${encodeURIComponent(svc.name)}%20from%20TK%20Designs`"
+             target="_blank" rel="noopener"
+             class="font-body text-xs text-gold tracking-widest uppercase border-b border-gold/25 hover:border-gold/80 pb-0.5 transition-all">
+            Enquire Now →
+          </a>
+        </div>
+      </template>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     PROCESS STRIP
+══════════════════════════════════ -->
+<section class="py-20 px-6 md:px-12 relative overflow-hidden" style="background:#0a0a0a;border-top:1px solid rgba(201,161,77,.07);border-bottom:1px solid rgba(201,161,77,.07);">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 50%,rgba(201,161,77,.04) 0%,transparent 65%);"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <p class="slabel mb-3">How It Works</p>
+      <h2 class="font-cinzel text-2xl md:text-4xl text-cream">From <span class="tg">First Meeting to Final Stitch</span></h2>
+      <div class="gdiv-c"></div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 relative">
+      <div class="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-px" style="background:linear-gradient(to right,transparent,rgba(201,161,77,.3) 20%,rgba(201,161,77,.3) 80%,transparent);"></div>
+      <template x-for="(step,i) in process" :key="step.title">
+        <div class="text-center group relative" data-aos="fade-up" :data-aos-delay="i*80">
+          <div class="w-14 h-14 border border-gray-800 group-hover:border-gold transition-colors flex items-center justify-center mx-auto mb-5 relative z-10" style="background:#0a0a0a;">
+            <span class="font-cinzel text-base tg" x-text="String(i+1).padStart(2,'0')"></span>
+          </div>
+          <h4 class="font-cinzel text-sm text-cream mb-2" x-text="step.title"></h4>
+          <p class="font-body text-xs text-gray-600 leading-relaxed px-3" x-text="step.desc"></p>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     ② EVENTS CATALOGUE
+══════════════════════════════════ -->
+<section id="events" class="py-24 px-6 md:px-12" style="background:#0f0f0f;">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- header row -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14">
+      <div data-aos="fade-right" data-aos-duration="800">
+        <p class="slabel mb-3">As Seen At</p>
+        <h2 class="font-cinzel text-3xl md:text-5xl text-cream leading-tight">Events <span class="tg">Catalogue</span></h2>
+        <div class="gdiv mt-5"></div>
+        <p class="font-body text-sm text-gray-500 mt-4 max-w-md leading-relaxed">
+          A record of every occasion TK Designs has dressed — from intimate ceremonies to packed galas across Gaborone and beyond.
+        </p>
+      </div>
+      <div class="flex gap-4" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+        <div class="stat-card">
+          <p class="font-cinzel text-3xl tg font-semibold" x-text="events.length + '+'"></p>
+          <p class="font-body text-xs text-gray-600 tracking-widest uppercase mt-1">Events</p>
+        </div>
+        <div class="stat-card">
+          <p class="font-cinzel text-3xl tg font-semibold">100+</p>
+          <p class="font-body text-xs text-gray-600 tracking-widest uppercase mt-1">Gentlemen</p>
+        </div>
+        <div class="stat-card">
+          <p class="font-cinzel text-3xl tg font-semibold">5★</p>
+          <p class="font-body text-xs text-gray-600 tracking-widest uppercase mt-1">Rating</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- filter tabs (sticky) -->
+    <div class="flex gap-2 overflow-x-auto no-sb py-2 mb-10 sticky top-[66px] z-30"
+         style="background:rgba(10,10,10,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,161,77,.07);">
+      <template x-for="tab in evTabs" :key="tab">
+        <button class="ftab" :class="evTab===tab?'on':''" @click="setEvTab(tab)" x-text="tab"></button>
+      </template>
+    </div>
+
+    <p class="font-body text-xs text-gray-600 tracking-widest uppercase mb-8">
+      Showing <span class="text-gold" x-text="filteredEvs.length"></span>
+      <span x-text="evTab==='All'?' events':' events in this category'"></span>
+    </p>
+
+    <!-- ── Events grid with image placeholders ── -->
+    <div class="grid md:grid-cols-3 gap-5">
+      <template x-for="(ev, i) in filteredEvs" :key="ev.id">
+        <div
+          :class="ev.wide ? 'md:col-span-2 ev-card' : 'md:col-span-1 ev-card'"
+          data-aos="fade-up"
+          :data-aos-delay="(i%3)*70"
+          data-aos-duration="800"
+          @click="openEv(ev)"
+        >          <!-- photo -->
+          <div class="ev-img" :style="`height:${ev.tall?'420px':ev.wide?'310px':'270px'}`">
+            <img
+              :src="ev.img"
+              :alt="ev.name"
+              loading="lazy"
+              class="ev-img-inner"
+            />
+            <div class="yr-badge" x-text="ev.year"></div>
+            <div class="cat-pill" x-text="ev.cat"></div>
+            <div class="ev-hover-cta">
+              <button class="btn-gold text-xs px-5 py-2.5"><span>View Event</span></button>
+            </div>
+          </div>
+
+          <!-- body -->
+          <div class="p-5 relative">
+            <div class="ctrim"></div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="dia"></span>
+              <span class="font-body text-[.58rem] text-gray-600 tracking-widest uppercase" x-text="ev.location"></span>
+            </div>
+            <h3 class="font-cinzel text-lg text-cream mb-1.5" x-text="ev.name"></h3>
+            <p class="font-body text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4" x-text="ev.desc"></p>
+            <div class="flex items-center justify-between">
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="t in ev.looks.slice(0,2)" :key="t">
+                  <span class="tag text-[.52rem]" x-text="t"></span>
+                </template>
+              </div>
+              <span class="font-body text-xs text-gold tracking-widest uppercase">View →</span>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template x-if="filteredEvs.length === 0">
+        <div class="md:col-span-3 text-center py-24">
+          <div class="dia mx-auto mb-4"></div>
+          <p class="font-cinzel text-xl text-gray-700">No events in this category yet.</p>
+          <a href="https://wa.me/26776635421" target="_blank" class="btn-ghost inline-block mt-6">Get in Touch</a>
+        </div>
+      </template>
+    </div>
+
+    <!-- bottom CTA -->
+    <div class="text-center mt-16" data-aos="fade-up">
+      <p class="font-body text-sm text-gray-600 mb-4">Want TK Designs at your next event?</p>
+      <a href="https://wa.me/26776635421?text=I'd%20like%20to%20enquire%20about%20dressing%20my%20event%20with%20TK%20Designs."
+         target="_blank" rel="noopener" class="btn-gold"><span>Dress Your Event</span></a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ CTA STRIP ══ -->
+<section class="py-24 px-6 md:px-12 relative overflow-hidden" style="background:#0a0a0a;border-top:1px solid rgba(201,161,77,.08);">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 100%,rgba(201,161,77,.05) 0%,transparent 60%);"></div>
+  <div class="max-w-3xl mx-auto text-center relative z-10" data-aos="fade-up" data-aos-duration="900">
+    <p class="slabel mb-4">Get Started</p>
+    <h2 class="font-cinzel text-3xl md:text-5xl text-cream mb-4 leading-tight">Your Next Occasion<br><span class="tg">Deserves a TK Suit</span></h2>
+    <div class="gdiv-c"></div>
+    <p class="font-body text-sm text-gray-500 max-w-lg mx-auto mb-10 leading-relaxed">
+      Whether you're walking down the aisle, accepting an award, or closing a deal — book your consultation today.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/26776635421?text=Hello%2C%20I%27d%20like%20to%20book%20a%20fitting%20with%20TK%20Designs." target="_blank" rel="noopener" class="btn-gold"><span>Book a Fitting Now</span></a>
+      <a href="index.html#contact" class="btn-ghost">Find the Studio</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ EVENT MODAL ══ -->
+<div id="ev-modal" :class="evOpen ? 'open' : ''">
+  <div id="ev-backdrop" @click="closeEv()"></div>
+  <div id="ev-panel" x-show="selEv" x-cloak>
+    <template x-if="selEv">
+      <div>
+        <button @click="closeEv()"
+                class="absolute top-4 right-4 z-20 w-9 h-9 border border-gray-700 flex items-center justify-center text-gray-500 hover:text-gold hover:border-gold transition-all">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>        <!-- modal image -->
+        <div class="w-full h-52 md:h-64 relative overflow-hidden bg-[#0f0f0f]">
+          <img
+            :src="selEv.img"
+            :alt="selEv.name"
+            class="w-full h-full object-cover block"
+          />
+          <div class="absolute bottom-0 left-0 right-0 h-24" style="background:linear-gradient(to top,#141414,transparent);"></div>
+          <div class="absolute top-3 left-3"><span class="cat-pill" x-text="selEv.cat"></span></div>
+          <div class="absolute bottom-3 left-3 yr-badge" style="position:absolute;top:auto;" x-text="selEv.year"></div>
+        </div>
+
+        <div class="p-8">
+          <p class="slabel mb-2" x-text="selEv.location"></p>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-cream mb-1" x-text="selEv.name"></h2>
+          <p class="font-display italic text-gray-500 mb-6" x-text="selEv.subtitle"></p>
+          <div class="h-px mb-6" style="background:linear-gradient(to right,rgba(201,161,77,.4),transparent);"></div>
+          <p class="font-body text-sm text-gray-400 leading-relaxed mb-6" x-text="selEv.story"></p>
+
+          <div class="mb-6">
+            <p class="font-body text-xs text-gray-600 tracking-widest uppercase mb-3">Pieces Featured</p>
+            <div class="flex flex-wrap gap-2">
+              <template x-for="t in selEv.looks" :key="t"><span class="tag" x-text="t"></span></template>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 mb-8">
+            <template x-for="h in selEv.highlights" :key="h">
+              <div class="flex items-start gap-2">
+                <span class="dia mt-1 flex-shrink-0"></span>
+                <span class="font-body text-xs text-gray-400 leading-relaxed" x-text="h"></span>
+              </div>
+            </template>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a :href="`https://wa.me/26776635421?text=I%20saw%20TK%20Designs%20at%20${encodeURIComponent(selEv.name)}%20and%20I%27d%20love%20to%20book%20a%20fitting.`"
+               target="_blank" rel="noopener" class="btn-gold text-center"><span>Book a Fitting</span></a>
+            <button @click="closeEv()" class="btn-ghost text-center">Back to Events</button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer class="py-12 px-6 md:px-12" style="background:#080808;border-top:1px solid rgba(201,161,77,.08);">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <a href="index.html" class="flex flex-col">
+      <span class="font-cinzel text-xl tracking-widest tg font-semibold">TK DESIGNS</span>
+      <span class="font-body text-[.5rem] tracking-[.3em] uppercase text-gray-700">BW · GABORONE</span>
+    </a>
+    <div class="flex gap-6">
+      <a href="https://www.instagram.com/tk_designs_bw" target="_blank" rel="noopener" class="font-body text-xs text-gray-600 hover:text-gold transition-colors tracking-widest uppercase">Instagram</a>
+      <a href="https://www.tiktok.com/@tk_designs_bw" target="_blank" rel="noopener" class="font-body text-xs text-gray-600 hover:text-gold transition-colors tracking-widest uppercase">TikTok</a>
+      <a href="https://wa.me/26776635421" target="_blank" rel="noopener" class="font-body text-xs text-gray-600 hover:text-gold transition-colors tracking-widest uppercase">WhatsApp</a>
+    </div>
+    <p class="font-body text-xs text-gray-700">© 2025 TK Designs Bw · Made in Gaborone 🇧🇼</p>
+  </div>
+</footer>
+
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, offset: 50, easing: 'ease-out-quart' });
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+  });
+
+  /* SVG icons */
+  const I = {
+    scissors:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c9a14d" fill="none" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="M7.848 8.25l1.536.887M7.848 8.25a3 3 0 1 1-5.196-3 3 3 0 0 1 5.196 3zm1.536.887a2.165 2.165 0 0 1 1.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 1 1-5.196 3 3 3 0 0 1 5.196-3zm1.536-.887a2.165 2.165 0 0 0 1.083-1.838c.005-.352.054-.695.14-1.025m-1.223 2.863 2.077-1.199m0-3.328a4.323 4.323 0 0 1 2.068-1.379l5.325-1.628a4.5 4.5 0 0 1 2.241-.032l.003.001c.96.234 1.883.757 2.614 1.488M10.607 12.809l7.81 4.507M10.607 11.891l7.81-4.507"/></svg>`,
+    ring:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c9a14d" fill="none" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>`,
+    brief:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c9a14d" fill="none" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"/></svg>`,
+    grad:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c9a14d" fill="none" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>`,
+    star:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c9a14d" fill="none" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>`,
+    shirt:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c9a14d" fill="none" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"/></svg>`,
+  };
+
+  function app() {
+    return {
+      evTab: 'All',
+      evOpen: false,
+      selEv: null,
+
+      evTabs: ['All','Wedding','Corporate','Graduation','Gala & Awards','Private'],
+
+      process: [
+        { title:'Consultation',      desc:'Meet us in Phase 2. We listen to your vision, event, and style goals.' },
+        { title:'Measurements',      desc:'Precise full-body measurements taken by our experienced tailors.' },
+        { title:'Fabric & Design',   desc:'Choose your fabric, lining, lapels, buttons, and every finishing detail.' },
+        { title:'Fitting & Collect', desc:'Final fitting, finishing touches, and you walk out a different man.' },
+      ],
+
+      services: [
+        { id:2, cat:'Wedding',     name:'Wedding & Bridal Party Attire',
+          desc:'Groom, groomsmen, and every member of the party — dressed with a unified elegance that photographs beautifully and feels extraordinary in person.',
+          tags:['Groom Suit','Groomsmen','Custom Fit','Group Pricing','Fast Turnaround'], icon:I.ring },
+        { id:3, cat:'Corporate',   name:'Corporate & Executive Dressing',
+          desc:'A power suit is a business tool. We dress executives and entrepreneurs who understand that presentation is part of performance.',
+          tags:['Two-Piece','Three-Piece','Boardroom Fit','Monogram','Volume Orders'], icon:I.brief },
+        { id:4, cat:'Alterations', name:'Premium Alterations',
+          desc:'Have a suit that almost fits? Our tailors perform expert alterations — taking in, letting out, re-hemming, and reshaping until it\'s exactly right.',
+          tags:['Waist Suppression','Re-hemming','Sleeve Adjustment','Re-lining','Same Week'], icon:I.scissors },
+        { id:5, cat:'Graduation',  name:'Graduation Suits',
+          desc:'The day you\'ve worked years for deserves the sharpest suit you\'ve ever worn. Walk across that stage as the man you\'ve become.',
+          tags:['Classic Fit','Slim Fit','Photo-Ready','Quick Turnaround'], icon:I.grad },
+        { id:6, cat:'Gala',        name:'Gala, Awards & Event Dressing',
+          desc:'Black tie. Gala nights. Award ceremonies. We outfit the men who are expected to command every room they enter.',
+          tags:['Tuxedo','Double Breasted','Peak Lapels','Velvet Accents'], icon:I.star },
+        { id:7, cat:'Readymade',   name:'Curated Readymade Edit',
+          desc:'Premium readymade suits in standard sizes — available in-store, Phase 2. Same TK quality, ready the same day.',
+          tags:['In-Store Now','Standard Sizes','Minor Alterations Included','Fast Collection'], icon:I.shirt },
+      ],
+
+      events: [
+        { id:1, cat:'Wedding',       year:'2024', wide:false, tall:true,  ph:'ph1',
+          name:'The Modise Wedding',
+          subtitle:'A Garden Ceremony, Gaborone',
+          location:'Gaborone, BW',
+          desc:'Groom and four groomsmen in coordinated charcoal double-breasted suits with gold pocket squares.',
+          story:'Kagiso Modise came to us six weeks before his wedding with a clear vision — he wanted his entire party to look like a unified front without looking identical. We crafted his signature double-breasted suit in charcoal wool with a gold silk lining, while the groomsmen wore slim-fit single-breasted counterparts in the same fabric. The gold pocket squares tied the look together. The ceremony photos were spectacular.',
+          looks:['Double Breasted Groom Suit','Slim Fit Groomsmen','Gold Pocket Squares','Charcoal Wool'],
+          highlights:['5 suits crafted','3-week turnaround','Custom gold lining','Coordinated bridal party'],
+          img:'TK.jpg' },
+
+        { id:2, cat:'Corporate',     year:'2026', wide:false, tall:false,
+          name:'Botswana–Mauritius Business Forum',
+          subtitle:'Thobo Kerekang at Protea Hotel by Marriott Gaborone Masa Square',
+          location:'Gaborone, BW',
+          desc:'Thobo Kerekang attended the Botswana–Mauritius Business Forum in a sharp navy corporate suit, styled for a professional business and investment setting.',
+          story:'Thobo Kerekang attended the Botswana–Mauritius Business Forum at Protea Hotel by Marriott Gaborone Masa Square. The event focused on ICT investment, digital trade and the value of cross-border collaboration between Botswana and Mauritius. His navy suit, light blue shirt and blue tie created a polished executive look suitable for business networking, innovation discussions and high-level professional engagement.',
+          looks:['Navy Corporate Suit','Executive Business Styling','Light Blue Shirt & Blue Tie','Travel-Ready Formal Look'],
+          highlights:['Botswana–Mauritius Business Forum','ICT investment and digital trade focus, Cross-border collaboration showcase','Professional innovation and growth setting','Full press coverage'],
+          img:'masa.png' },
+
+        { id:3, cat:'Gala & Awards', year:'2026', wide:true,  tall:false,
+          name:'BNSC Awards Black Formal Suit',
+          subtitle:'Annual Gala — Avani Resort, Gaborone',
+          location:'Avani Resort, Gaborone',
+          desc:'Eight nominees and winners dressed in peak-lapel tuxedos for the black-tie ceremony.',
+          story:'Thobo Kerekang is wearing a classic black formal suit with a white shirt and black tie. The suit has a sharp, clean cut with structured shoulders, giving it a polished awards-night look. The black colour keeps the outfit timeless, while the white shirt and pocket square add a clean contrast. It is simple, elegant, and perfect for a formal red-carpet or awards ceremony.',
+          looks:['Classic Black Formal Suit','White Shirt & Black Tie','Sharp Structured Shoulders','Awards Night Pocket Square'],
+          highlights:['Thobo Kerekang dressed for BNSC Award','Sharp formal awards-night look','Black tie standard','Elegant red-carpet presentation'],
+          img:'gala.png' },
+
+        { id:4, cat:'Corporate',    year:'2026', wide:false, tall:false,
+          name:'Agriculture Business & Investment Forum',
+          subtitle:'Mr Kerekang at the inaugural Agriculture Business & Investment Forum',
+          location:'Gaborone, BW',
+          desc:'Mr Kerekang attended the inaugural Botswana Agriculture Business & Investment Forum in a refined navy double-breasted suit, styled with a light blue shirt, navy tie, pocket square and tan leather briefcase.',
+          story:'Mr Kerekang attended the inaugural Botswana Agriculture Business & Investment Forum, where one message stood out clearly: agriculture is no longer peripheral to economic transformation; it is central to it. The event highlighted the need to reposition agriculture from subsistence into a resilient, export-oriented sector built on strong value chains, agro-processing and improved market access. His navy double-breasted suit gave a polished executive presence, while the tan leather briefcase added a strong business and investment look.',
+          looks:['Navy Double-Breasted Suit','Light Blue Shirt & Navy Tie','Tan Leather Briefcase Styling','Executive Pocket Square Detail'],
+          highlights:['Export-oriented agriculture conversation','Focus on value chains and agro-processing','Professional executive business look','Inaugural agriculture investment forum'],
+          img:'tan.png' },
+
+        { id:5, cat:'Wedding',       year:'2025', wide:false, tall:true,  ph:'ph5',
+          name:'Hey Nyena’s Wedding',
+          subtitle:'Luxury White & Champagne Wedding Look',
+          location:'Mochudi, BW',
+          desc:'A luxury wedding look featuring an ice white jacquard tuxedo paired with a champagne gold embellished bridal gown.',
+          story:'Hey Nyena’s Wedding carried a clean luxury wedding style. The groom wore an ice white jacquard wedding tuxedo with a soft floral pattern, black bow tie and gold chain detail. The jacket created a premium groom look with strong formal contrast. The bride wore a champagne gold embellished gown with beadwork and sheer detailing. The white, champagne, black and gold tones worked together beautifully, giving the couple an elegant and refined wedding presence.',
+          looks:['Ice White Jacquard Tuxedo','Black Bow Tie Formal Styling','Gold Chain Jacket Detail','Champagne Gold Bridal Pairing'],
+          highlights:['Premium jacquard tuxedo detail','Elegant bride and groom styling','Luxury white wedding look','Champagne, white and gold colour harmony'],
+          img:'gallery-07.png' },
+
+        { id:6, cat:'Corporate',       year:'2026', wide:false, tall:false,
+          name:'Chobe Connect 2026 Investment Conference',
+          subtitle:'Investment Conference Hosting & Participation',
+          location:'Chobe, Gaborone',
+          desc:'A polished corporate conference look featuring a navy suit, white shirt, burgundy tie and pocket square, styled for public speaking and high-level investment dialogue.',
+          story:'At the Chobe Connect 2026 Investment Conference, the look reflected confidence, leadership and professional presence. The navy suit created a sharp corporate base, while the burgundy tie added a strong executive contrast. The event focused on Chobe’s growth as a strategic investment hub, supported by the SEZ framework and Botswana’s wider agenda to diversify the economy, create jobs and strengthen regional and global linkages. The outfit matched the tone of the occasion: formal, focused and investment-ready.',
+          looks:['Navy Corporate Suit','White Shirt & Burgundy Tie','Conference Speaker Styling','Executive Pocket Square Detail'],
+          highlights:['Chobe Connect 2026 Investment Conference','Strategic investment hub conversation','SEZ framework and economic diversification focus','Professional hosting and speaker presence'],
+          img:'chobe.png' },
+
+        { id:7, cat:'Corporate',     year:'2024', wide:false, tall:false,
+          name:'Airport City Launch',
+          subtitle:'Hosted by SEZA_Botswana',
+          location:'Gaborone',
+          desc:'A smart corporate event look featuring a navy double-breasted blazer, light blue shirt and beige trousers, styled for a major investment and development launch.',
+          story:'At the Airport City Launch hosted by SEZA_Botswana, the look reflected clean corporate elegance and modern investment-event styling. The navy double-breasted blazer gave a sharp executive presence, while the light blue shirt and beige trousers softened the outfit for a polished daytime launch setting. The event highlighted Botswana’s growing focus on special economic zones, infrastructure development and investment-led transformation.',
+          looks:['Navy Double-Breasted Blazer','Light Blue Shirt','Beige Smart Trousers','Group Coordination'],
+          highlights:['Airport City Launch event','Smart investment-event appearance','Modern corporate daytime styling','Hosted by SEZA_Botswana'],
+          img:'seza.png' },
+
+        { id:8, cat:'Corporate', year:'2024', wide:true,  tall:false,
+          name:'Corporate Dialogue Session',
+          subtitle:'Business Interview & Executive Conversation',
+          location:'Gaborone, BW',
+          desc:'A professional corporate dialogue moment featuring sharp navy business styling, formal interview setup and executive discussion around business growth and leadership.',
+          story:'This image captures a polished corporate interview setting, with both speakers dressed in refined business attire. The navy suit, white shirt, red striped tie and pocket square create a strong executive look, while the microphone setup gives the moment a professional media and business dialogue feel. The styling fits a formal conversation around leadership, investment, business strategy and corporate growth.',
+          looks:['Corporate Suit','Classic Formal','White Shirt & Striped Tie','Executive Interview Styling'],
+          highlights:['Sharp media-ready formal look','Professional business interview setting','Executive leadership conversation','Keynote speaker dressed'],
+          img:'interview.png' },
+      ],
+
+      get filteredEvs() {
+        return this.evTab === 'All' ? this.events : this.events.filter(e => e.cat === this.evTab);
+      },
+
+      setEvTab(t) { this.evTab = t; this.$nextTick(() => AOS.refreshHard()); },
+
+      openEv(ev) {
+        this.selEv = ev; this.evOpen = true;
+        document.body.style.overflow = 'hidden';
+      },
+
+      closeEv() {
+        this.evOpen = false; document.body.style.overflow = '';
+        setTimeout(() => { this.selEv = null; }, 450);
+      },
+
+      init() {
+        window.addEventListener('keydown', e => { if (e.key === 'Escape' && this.evOpen) this.closeEv(); });
+      },
+    };
+  }
+</script>
+</body>
+</html>
